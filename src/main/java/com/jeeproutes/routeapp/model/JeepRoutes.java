@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "jeep_route")
-@IdClass(JeepRoutesId.class)
+@IdClass(JeepRoutesById.class)
 public class JeepRoutes {
     @Id
     String jeepcode;

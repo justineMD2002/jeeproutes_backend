@@ -7,14 +7,14 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
-public class HelperRoute {
+public class HelperClass {
     @JsonProperty("jeepcode")
     private String jeepCode;
     
     @JsonProperty("route")
     private List<String> routes;
 
-    public HelperRoute(String jeepCode, List<String> routes) {
+    public HelperClass(String jeepCode, List<String> routes) {
         this.jeepCode = jeepCode;
         this.routes = routes;
     }

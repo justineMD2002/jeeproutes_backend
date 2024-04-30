@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jeeproutes.routeapp.model.HelperRoute;
+import com.jeeproutes.routeapp.model.HelperClass;
 import com.jeeproutes.routeapp.model.JeepRoutes;
 import com.jeeproutes.routeapp.service.JeepRouteService;
 
@@ -26,16 +26,16 @@ import org.springframework.web.bind.annotation.PutMapping;
 
 @RestController
 @CrossOrigin
-public class JeepRouteController {
+public class JeepneyRouteController {
     
     @Autowired
     private final JeepRouteService jeepRouteService;
 
-    public JeepRouteController(JeepRouteService jeepRouteService) {
+    public JeepneyRouteController(JeepRouteService jeepRouteService) {
         this.jeepRouteService = jeepRouteService;
     }
 
-    @GetMapping("/get-all-routes")
+    @GetMapping("/get-all-jeepneyroute")
     public Map<String, List<String>> getRoutesByJeepCode() {
         return jeepRouteService.getAllJeepRoutes();
     }
@@ -45,22 +45,22 @@ public class JeepRouteController {
         return jeepRouteService.getRouteByJeepCode(jeepcode);
     }
 
-    @PostMapping("/get-multiple-jeeproutes")
-    public List<HelperRoute> getMultipleRoutes(String jeepcodes) {
+    @PostMapping("/get-combi-jeepneyroute")
+    public List<HelperClass> getMultipleRoutes(String jeepcodes) {
         return jeepRouteService.getMultipleJeepRoutes(jeepcodes);
     }
 
-    @PostMapping("/add-jeeproute")
+    @PostMapping("/create-jeepneyroute")
     public int addJeepRoute(String jeepcode, String route) {
         return jeepRouteService.addJeepRoute(jeepcode, route);
     }
 
-    @PutMapping("/change-route/{jeepcode}")
+    @PutMapping("/update-jeepneyroute/{jeepcode}")
     public int changeJeepRoute(@PathVariable String jeepcode, String route) {
         return jeepRouteService.changeRoute(jeepcode, route);
     }
 
-    @DeleteMapping("/delete-route/{jeepcode}")
+    @DeleteMapping("/delete-jeepneyroute/{jeepcode}")
     public int deleteJeepRoute(@PathVariable String jeepcode, String route) {
         return jeepRouteService.deleteJeepRoute(jeepcode, route);
     }

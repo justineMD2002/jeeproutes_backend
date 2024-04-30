@@ -6,22 +6,22 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.jeeproutes.routeapp.model.HelperRoute;
+import com.jeeproutes.routeapp.model.HelperClass;
 import com.jeeproutes.routeapp.model.Jeep;
 import com.jeeproutes.routeapp.model.JeepRoutes;
 import com.jeeproutes.routeapp.model.Route;
-import com.jeeproutes.routeapp.repository.JeepRouteRepo;
-import com.jeeproutes.routeapp.repository.JeepRepo;
-import com.jeeproutes.routeapp.repository.RouteRepo;
+import com.jeeproutes.routeapp.repository.JeepRouteRepository;
+import com.jeeproutes.routeapp.repository.JeepRepository;
+import com.jeeproutes.routeapp.repository.RouteRepository;
 
 @Service
 public class JeepRouteService {
     @Autowired
-    private JeepRouteRepo jeepRouteRepo;
+    private JeepRouteRepository jeepRouteRepo;
     @Autowired
-    private JeepRepo jeepRepo;
+    private JeepRepository jeepRepo;
     @Autowired
-    private RouteRepo routeRepo;
+    private RouteRepository routeRepo;
 
     public Map<String,List<String>> getAllJeepRoutes() {
         List<JeepRoutes> allRoutes = jeepRouteRepo.findAll();
@@ -41,14 +41,14 @@ public class JeepRouteService {
         return routeByJeepcode;
     }
 
-    public List<HelperRoute> getMultipleJeepRoutes(String jeepcodes) {
-        List<HelperRoute> helperRoutes = new ArrayList<>();
+    public List<HelperClass> getMultipleJeepRoutes(String jeepcodes) {
+        List<HelperClass> helperRoutes = new ArrayList<>();
         List<String> jeepList = Arrays.asList(jeepcodes.split(","));
         
         for (String jeep : jeepList) {
             if (addJeepCode(jeep) == 0) {
                 List<String> routes = getRouteByJeepCode(jeep);
-                HelperRoute helperRoute = new HelperRoute(jeep, routes);
+                HelperClass helperRoute = new HelperClass(jeep, routes);
                 helperRoutes.add(helperRoute);
             }
         }

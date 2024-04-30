@@ -2,8 +2,8 @@ package com.jeeproutes.routeapp.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.jeeproutes.routeapp.model.Jeep;
+import com.jeeproutes.routeapp.model.Route;
 
-public interface JeepRepo extends JpaRepository<Jeep,String>{
+public interface RouteRepository extends JpaRepository<Route,String>{
     
 }
